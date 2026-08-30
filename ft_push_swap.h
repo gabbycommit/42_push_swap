@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/08/30 15:53:45 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/08/30 16:13:52 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef struct s_counter
 }		t_counter;
 
 // using two-way linked list as stack a
-typedef struct s_info
+typedef struct s_stack
 {
 	int				num;
 	struct s_info	*next;
 	struct s_info	*prev;
-}
+}					t_stack;
 
 #endif
