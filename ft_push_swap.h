@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/08/30 17:19:21 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/08/30 18:03:22 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PUSH_SWAP_H
 
 # include <stdlib.h>
-# include "libft.h"
 
 // for benchmark use, for calculating the operations
 typedef struct s_counter
