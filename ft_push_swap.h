@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/08/30 18:03:22 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/08/30 18:10:41 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
+
+t_stack		*ps_new_node(int num);
+t_counter	*ps_new_counter(void);
 
 #endif
