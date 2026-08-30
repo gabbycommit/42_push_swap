@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/08/30 16:13:52 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/08/30 17:19:21 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_counter
 typedef struct s_stack
 {
 	int				num;
-	struct s_info	*next;
-	struct s_info	*prev;
+	struct s_stack	*next;
+	struct s_stack	*prev;
 }					t_stack;
 
 #endif
