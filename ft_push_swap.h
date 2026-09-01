@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 15:21:22 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/01 16:02:29 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ void		ps_swap_b(t_stack **b, t_counter *count, int is_write);
 void		ps_ss(t_stack **a, t_stack **b, t_counter *count);
 void		ps_push_a(t_stack **a, t_stack **b, t_counter *count);
 void		ps_push_b(t_stack **a, t_stack **b, t_counter *count);
-void		ps_rotate_a(t_stack **a, t_counter *count, int is_write);	
-void		ps_rotate_b(t_stack **b, t_counter *count, int is_write);	
+void		ps_rotate_a(t_stack **a, t_counter *count, int is_write);
+void		ps_rotate_b(t_stack **b, t_counter *count, int is_write);
+void		ps_rr(t_stack **a, t_stack **b, t_counter *count);
+void		ps_reverse_rotate_a(t_stack **a, t_counter *count, int is_write);
+void		ps_reverse_rotate_b(t_stack **b, t_counter *count, int is_write);
+void		ps_rrr(t_stack **a, t_stack **b, t_counter *count);
 
 #endif
