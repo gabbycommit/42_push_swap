@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:11:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 09:57:06 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/01 11:19:46 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_stack	*ps_lstlast(t_stack *lst)
 	return (lst);
 }
 
-// adding new node to stack at back
+// adding new node to stack back
 void	ps_lstadd_back(t_stack **lst, t_stack *new_node)
 {
 	t_stack	*last_node;
@@ -49,6 +49,34 @@ void	ps_lstadd_back(t_stack **lst, t_stack *new_node)
 	last_node = ps_lstlast(*lst);
 	last_node->next = new_node;
 	new_node->prev = last_node;
+}
+
+// adding new node to stack front
+void	ps_lstadd_front(t_stack **lst, t_stack *new_node)
+{
+	t_stack	*second;
+
+	if (!lst || !new_node)
+		return ;
+	if (!(*lst))
+	{
+		*lst = new_node;
+		(*lst)->prev = NULL;
+		(*lst)->next = NULL;
+		return ;
+	}
+	second = (*lst)->next;
+	new_node->prev = NULL;
+	new_node->next = *lst;
+	(*lst)->prev = new_node;
+	if (second)
+	{
+		(*lst)->next = second;
+		second->prev = *lst;
+	}
+	else
+		(*lst)->next = NULL;
+	*lst = new_node;
 }
 
 // create new counter struct

@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/08/30 19:00:46 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/01 10:43:08 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <unistd.h>
 
 // for benchmark use, for calculating the operations
 typedef struct s_counter
@@ -40,7 +41,11 @@ typedef struct s_stack
 
 t_stack		*ps_new_node(int num);
 t_counter	*ps_new_counter(void);
-void		ps_lstadd_back(t_stack **lst, t_stack *new);
+void		ps_lstadd_back(t_stack **lst, t_stack *new_node);
+void		ps_lstadd_front(t_stack **lst, t_stack *new_node);
 t_stack		*ps_lstlast(t_stack *lst);
+void		ps_swap_a(t_stack **a, t_counter *count, int is_write);
+void		ps_swap_b(t_stack **b, t_counter *count, int is_write);
+void		ps_ss(t_stack **a, t_stack **b);
 
 #endif
