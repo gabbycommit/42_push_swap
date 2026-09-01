@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 10:43:08 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/01 15:21:22 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,13 @@ t_counter	*ps_new_counter(void);
 void		ps_lstadd_back(t_stack **lst, t_stack *new_node);
 void		ps_lstadd_front(t_stack **lst, t_stack *new_node);
 t_stack		*ps_lstlast(t_stack *lst);
+size_t		ps_lstcount(t_stack *lst);
 void		ps_swap_a(t_stack **a, t_counter *count, int is_write);
 void		ps_swap_b(t_stack **b, t_counter *count, int is_write);
-void		ps_ss(t_stack **a, t_stack **b);
+void		ps_ss(t_stack **a, t_stack **b, t_counter *count);
+void		ps_push_a(t_stack **a, t_stack **b, t_counter *count);
+void		ps_push_b(t_stack **a, t_stack **b, t_counter *count);
+void		ps_rotate_a(t_stack **a, t_counter *count, int is_write);	
+void		ps_rotate_b(t_stack **b, t_counter *count, int is_write);	
 
 #endif
