@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:30:23 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 15:23:37 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/01 16:06:02 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ps_rotate_a(t_stack **a, t_counter *count, int is_write)
 	if (is_write)
 	{
 		count->ra++;
-		write(1, "ra", 2);
+		write(1, "ra\n", 3);
 	}
 }
 
@@ -64,7 +64,7 @@ void	ps_rotate_b(t_stack **b, t_counter *count, int is_write)
 	if (is_write)
 	{
 		count->rb++;
-		write(1, "rb", 2);
+		write(1, "rb\n", 3);
 	}
 }
 
@@ -73,5 +73,5 @@ void	ps_rr(t_stack **a, t_stack **b, t_counter *count)
 	ps_rotate_a(a, count, 0);
 	ps_rotate_b(b, count, 0);
 	count->rr++;
-	write(1, "rr", 2);
+	write(1, "rr\n", 3);
 }

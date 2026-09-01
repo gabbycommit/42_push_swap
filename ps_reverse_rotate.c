@@ -6,13 +6,11 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:31:56 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 15:59:43 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/01 16:06:35 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-// [first]->[]->[prev_last]->[last]
 
 void	ps_reverse_rotate_a(t_stack **a, t_counter *count, int is_write)
 {
@@ -38,7 +36,7 @@ void	ps_reverse_rotate_a(t_stack **a, t_counter *count, int is_write)
 	if (is_write)
 	{
 		count->rra++;
-		write(1, "rra", 3);
+		write(1, "rra\n", 4);
 	}
 }
 
@@ -66,7 +64,7 @@ void	ps_reverse_rotate_b(t_stack **b, t_counter *count, int is_write)
 	if (is_write)
 	{
 		count->rrb++;
-		write(1, "rrb", 3);
+		write(1, "rrb\n", 4);
 	}
 }
 
@@ -75,5 +73,5 @@ void	ps_rrr(t_stack **a, t_stack **b, t_counter *count)
 	ps_reverse_rotate_a(a, count, 0);
 	ps_reverse_rotate_b(b, count, 0);
 	count->rrr++;
-	write(1, "rrr", 3);
+	write(1, "rrr\n", 4);
 }

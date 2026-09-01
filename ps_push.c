@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 10:10:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 15:23:11 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/01 16:05:37 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ps_push_a(t_stack **a, t_stack **b, t_counter *count)
 	else
 		*b = NULL;
 	count->pa++;
-	write(1, "pa", 2);
+	write(1, "pa\n", 3);
 }
 
 void	ps_push_b(t_stack **a, t_stack **b, t_counter *count)
@@ -51,5 +51,5 @@ void	ps_push_b(t_stack **a, t_stack **b, t_counter *count)
 	else
 		*a = NULL;
 	count->pb++;
-	write(1, "pb", 2);
+	write(1, "pb\n", 3);
 }
