@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/08/30 18:10:41 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/08/30 19:00:46 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ typedef struct s_stack
 
 t_stack		*ps_new_node(int num);
 t_counter	*ps_new_counter(void);
+void		ps_lstadd_back(t_stack **lst, t_stack *new);
+t_stack		*ps_lstlast(t_stack *lst);
 
 #endif
