@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:11:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/03 11:42:57 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/03 16:52:33 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ t_counter	*ps_new_counter(void)
 	new_counter->rra = 0;
 	new_counter->rrb = 0;
 	new_counter->bench = 0;
-	new_counter->strategy = STRAT_ADAPTIVE;
+	new_counter->strategy = "--adaptive";
 	return (new_counter);
 }

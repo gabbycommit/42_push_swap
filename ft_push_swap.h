@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/03 10:20:30 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/03 16:52:01 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,6 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
-
-typedef enum e_strategy
-{
-	STRAT_SIMPLE,
-	STRAT_MEDIUM,
-	STRAT_COMPLEX,
-	STRAT_ADAPTIVE
-}	t_strategy;
 
 // for benchmark use, for calculating the operations
 typedef struct s_counter
@@ -39,7 +31,7 @@ typedef struct s_counter
 	int			rra;
 	int			rrb;
 	int			bench;
-	t_strategy	strategy;
+	char		*strategy;
 }				t_counter;
 
 // using two-way linked list as stack a
@@ -50,12 +42,21 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
+// utils
 t_stack		*ps_new_node(int num);
 t_counter	*ps_new_counter(void);
 void		ps_lstadd_back(t_stack **lst, t_stack *new_node);
 void		ps_lstadd_front(t_stack **lst, t_stack *new_node);
 t_stack		*ps_lstlast(t_stack *lst);
 size_t		ps_lstcount(t_stack *lst);
+long		ps_atol(const char *s);
+
+//parse and validation
+float		compute_disorder(t_stack *a);
+char		**ps_filter_flags(int argc, char **argv, t_counter *count);
+t_stack		*ps_num_parse_and_validation(char **num_data, t_stack **a);
+
+// operations
 void		ps_swap_a(t_stack **a, t_counter *count, int is_write);
 void		ps_swap_b(t_stack **b, t_counter *count, int is_write);
 void		ps_ss(t_stack **a, t_stack **b, t_counter *count);
