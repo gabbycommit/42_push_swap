@@ -6,30 +6,41 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 16:02:29 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/03 10:20:30 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PUSH_SWAP_H
 # define FT_PUSH_SWAP_H
 
+# include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef enum e_strategy
+{
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX,
+	STRAT_ADAPTIVE
+}	t_strategy;
 
 // for benchmark use, for calculating the operations
 typedef struct s_counter
 {
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-}		t_counter;
+	int			sa;
+	int			sb;
+	int			ss;
+	int			pa;
+	int			pb;
+	int			ra;
+	int			rb;
+	int			rr;
+	int			rra;
+	int			rrb;
+	int			bench;
+	t_strategy	strategy;
+}				t_counter;
 
 // using two-way linked list as stack a
 typedef struct s_stack
