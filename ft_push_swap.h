@@ -14,6 +14,8 @@
 # define FT_PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
 
 // for benchmark use, for calculating the operations
 typedef struct s_counter
@@ -28,14 +30,20 @@ typedef struct s_counter
 	int	rr;
 	int	rra;
 	int	rrb;
+	int rrr;
 }		t_counter;
 
 // using two-way linked list as stack a
 typedef struct s_stack
 {
-	int				num;
-	struct s_stack	*next;
-	struct s_stack	*prev;
+	int             num;
+    int             index;        
+    int             pos;          
+    int             target_pos;   
+    int             cost_a;      
+    int             cost_b;       
+    struct s_stack  *next;
+    struct s_stack  *prev;
 }					t_stack;
 
 #endif
