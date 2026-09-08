@@ -30,7 +30,7 @@ typedef struct s_counter
 	int	rr;
 	int	rra;
 	int	rrb;
-	int rrr;
+	int	rrr;
 }		t_counter;
 
 // using two-way linked list as stack a
@@ -44,6 +44,12 @@ typedef struct s_stack
     int             cost_b;       
     struct s_stack  *next;
     struct s_stack  *prev;
-}					t_stack;
+}			 t_stack;
+
+// Stack utilities
+t_stack	*ft_stack_new(int num);
+t_stack	*ft_stack_last(t_stack *stack);
+void	ft_stack_add_back(t_stack **stack, t_stack *new_node);
+int		ft_stack_size(t_stack *stack);
 
 #endif
