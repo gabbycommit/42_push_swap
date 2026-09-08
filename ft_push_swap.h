@@ -51,5 +51,6 @@ t_stack	*ft_stack_new(int num);
 t_stack	*ft_stack_last(t_stack *stack);
 void	ft_stack_add_back(t_stack **stack, t_stack *new_node);
 int		ft_stack_size(t_stack *stack);
+void	ft_stack_free(t_stack **stack);
 
 #endif

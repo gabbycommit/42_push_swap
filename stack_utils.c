@@ -67,3 +67,19 @@ int	ft_stack_size(t_stack *stack)
 	}
 	return (size);
 }
+void	ft_stack_free(t_stack **stack)
+{
+	t_stack	*current;
+	t_stack	*tmp;
+
+	if (!stack || !*stack)
+		return ;
+	current = *stack;
+	while (current)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp;
+	}
+	*stack = NULL;
+}
