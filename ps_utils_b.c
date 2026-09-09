@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:38:12 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 12:08:51 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/09 20:41:50 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ float	ps_compute_disorder(t_stack *a)
 
 	mistakes = 0;
 	total_pairs = 0;
-	next_node = a->next;
 	while (a)
 	{
+		next_node = a->next;
 		while (next_node)
 		{
 			total_pairs++;
@@ -57,5 +57,7 @@ float	ps_compute_disorder(t_stack *a)
 		}
 		a = a->next;
 	}
+	if (total_pairs == 0)
+		return (0);
 	return (mistakes / total_pairs);
 }
