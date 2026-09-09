@@ -6,24 +6,11 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:38:12 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/03 16:15:25 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/09 12:08:51 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-size_t	ps_lstcount(t_stack *lst)
-{
-	size_t	count;
-
-	count = 0;
-	while (lst)
-	{
-		count++;
-		lst = lst->next;
-	}
-	return (count);
-}
 
 long	ps_atol(const char *s)
 {
@@ -48,4 +35,27 @@ long	ps_atol(const char *s)
 		i++;
 	}
 	return (result * sign);
+}
+
+float	ps_compute_disorder(t_stack *a)
+{
+	float	mistakes;
+	float	total_pairs;
+	t_stack	*next_node;
+
+	mistakes = 0;
+	total_pairs = 0;
+	next_node = a->next;
+	while (a)
+	{
+		while (next_node)
+		{
+			total_pairs++;
+			if (a->num > next_node->num)
+				mistakes++;
+			next_node = next_node->next;
+		}
+		a = a->next;
+	}
+	return (mistakes / total_pairs);
 }

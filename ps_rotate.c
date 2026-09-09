@@ -6,13 +6,13 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:30:23 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 16:06:02 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/09 16:12:28 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ps_rotate_a(t_stack **a, t_counter *count, int is_write)
+void	ps_rotate_a(t_stack **a, t_config *config, int is_write)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -21,7 +21,7 @@ void	ps_rotate_a(t_stack **a, t_counter *count, int is_write)
 	if (!a || !(*a) || !(*a)->next)
 		return ;
 	if (ps_lstcount(*a) == 2)
-		ps_swap_a(a, count, 0);
+		ps_swap_a(a, config, 0);
 	else
 	{
 		first = *a;
@@ -35,12 +35,12 @@ void	ps_rotate_a(t_stack **a, t_counter *count, int is_write)
 	*a = second;
 	if (is_write)
 	{
-		count->ra++;
+		config->ra++;
 		write(1, "ra\n", 3);
 	}
 }
 
-void	ps_rotate_b(t_stack **b, t_counter *count, int is_write)
+void	ps_rotate_b(t_stack **b, t_config *config, int is_write)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -49,7 +49,7 @@ void	ps_rotate_b(t_stack **b, t_counter *count, int is_write)
 	if (!b || !(*b) || !(*b)->next)
 		return ;
 	if (ps_lstcount(*b) == 2)
-		ps_swap_b(b, count, 0);
+		ps_swap_b(b, config, 0);
 	else
 	{
 		first = *b;
@@ -63,15 +63,15 @@ void	ps_rotate_b(t_stack **b, t_counter *count, int is_write)
 	*b = second;
 	if (is_write)
 	{
-		count->rb++;
+		config->rb++;
 		write(1, "rb\n", 3);
 	}
 }
 
-void	ps_rr(t_stack **a, t_stack **b, t_counter *count)
+void	ps_rr(t_stack **a, t_stack **b, t_config *config)
 {
-	ps_rotate_a(a, count, 0);
-	ps_rotate_b(b, count, 0);
-	count->rr++;
+	ps_rotate_a(a, config, 0);
+	ps_rotate_b(b, config, 0);
+	config->rr++;
 	write(1, "rr\n", 3);
 }

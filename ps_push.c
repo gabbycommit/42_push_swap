@@ -6,13 +6,13 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 10:10:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/01 16:05:37 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/09 16:11:52 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ps_push_a(t_stack **a, t_stack **b, t_counter *count)
+void	ps_push_a(t_stack **a, t_stack **b, t_config *config)
 {
 	t_stack	*first_b;
 	t_stack	*second_b;
@@ -29,11 +29,11 @@ void	ps_push_a(t_stack **a, t_stack **b, t_counter *count)
 	}
 	else
 		*b = NULL;
-	count->pa++;
+	config->pa++;
 	write(1, "pa\n", 3);
 }
 
-void	ps_push_b(t_stack **a, t_stack **b, t_counter *count)
+void	ps_push_b(t_stack **a, t_stack **b, t_config *config)
 {
 	t_stack	*first_a;
 	t_stack	*second_a;
@@ -50,6 +50,6 @@ void	ps_push_b(t_stack **a, t_stack **b, t_counter *count)
 	}
 	else
 		*a = NULL;
-	count->pb++;
+	config->pb++;
 	write(1, "pb\n", 3);
 }

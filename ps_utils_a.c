@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:11:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/03 16:52:33 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/09 11:32:42 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,15 @@ void	ps_lstadd_front(t_stack **lst, t_stack *new_node)
 	*lst = new_node;
 }
 
-// create new counter struct
-t_counter	*ps_new_counter(void)
+size_t	ps_lstcount(t_stack *lst)
 {
-	t_counter	*new_counter;
+	size_t	count;
 
-	new_counter = (t_counter *)malloc(sizeof(t_counter));
-	if (!new_counter)
-		return (NULL);
-	new_counter->sa = 0;
-	new_counter->sb = 0;
-	new_counter->ss = 0;
-	new_counter->pa = 0;
-	new_counter->pb = 0;
-	new_counter->ra = 0;
-	new_counter->rb = 0;
-	new_counter->rra = 0;
-	new_counter->rrb = 0;
-	new_counter->bench = 0;
-	new_counter->strategy = "--adaptive";
-	return (new_counter);
+	count = 0;
+	while (lst)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
 }
