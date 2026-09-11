@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:11:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 11:32:42 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/11 11:18:55 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack	*ps_new_node(int num)
 	if (!new_node)
 		return (NULL);
 	new_node->num = num;
+	new_node->rank = -1;
 	new_node->prev = NULL;
 	new_node->next = NULL;
 	return (new_node);
