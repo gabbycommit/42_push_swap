@@ -53,4 +53,9 @@ void	ft_stack_add_back(t_stack **stack, t_stack *new_node);
 int		ft_stack_size(t_stack *stack);
 void	ft_stack_free(t_stack **stack);
 
+// Operations: Swap
+void	sa(t_stack **stack_a);
+void	sb(t_stack **stack_b);
+void	ss(t_stack **stack_a, t_stack **stack_b);
+
 #endif
