@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "ft_push_swap.h"
 
 static void	reverse_rotate(t_stack **stack)
