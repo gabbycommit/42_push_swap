@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:31:56 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 16:12:10 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/12 13:40:43 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	ps_reverse_rotate_a(t_stack **a, t_config *config, int is_write)
 		first = *a;
 		last = ps_lstlast(*a);
 		prev_last = last->prev;
+		first->prev = last;
+		last->prev = NULL;
+		last->next = first;
+		prev_last->next = NULL;
+		*a = last;
 	}
-	first->prev = last;
-	last->prev = NULL;
-	last->next = first;
-	prev_last->next = NULL;
-	*a = last;
 	if (is_write)
 	{
 		config->rra++;
@@ -55,12 +55,12 @@ void	ps_reverse_rotate_b(t_stack **b, t_config *config, int is_write)
 		first = *b;
 		last = ps_lstlast(*b);
 		prev_last = last->prev;
+		first->prev = last;
+		last->prev = NULL;
+		last->next = first;
+		prev_last->next = NULL;
+		*b = last;
 	}
-	first->prev = last;
-	last->prev = NULL;
-	last->next = first;
-	prev_last->next = NULL;
-	*b = last;
 	if (is_write)
 	{
 		config->rrb++;

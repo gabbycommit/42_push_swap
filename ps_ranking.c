@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 12:11:12 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/11 11:30:24 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/12 14:18:37 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ps_init_rank(t_stack *a)
 	cur = a;
 	while (cur)
 	{
-		cur->rank = ps_binary_search(arr, size, cur->num) + 1;
+		cur->rank = ps_binary_search(arr, size, cur->num);
 		cur = cur->next;
 	}
 }

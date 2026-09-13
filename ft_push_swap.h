@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/11 11:31:05 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/13 11:10:25 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
 
 // algo
 void		ps_init_rank(t_stack *a);
+void		ps_radix_lsd_sort(
+				t_stack **a, t_stack **b, t_config *config, size_t size);
 
 #endif
