@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/16 12:07:21 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/16 15:17:43 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_stack
 typedef struct s_range
 {
 	int	size;
-	int	bit;
+	int	pass;
 }		t_range;
 
 // utils
@@ -83,6 +83,6 @@ void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
 
 // algo
 void		ps_init_rank(t_stack *a);
-void		ps_radix_msd_sort(t_stack **a, t_stack **b, t_config *config);
+void		ps_radix_msd_base3_sort(t_stack **a, t_stack **b, t_config *config);
 
 #endif
