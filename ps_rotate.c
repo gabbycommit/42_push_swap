@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:30:23 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 16:12:28 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/16 16:35:59 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,17 @@
 void	ps_rotate_a(t_stack **a, t_config *config, int is_write)
 {
 	t_stack	*first;
-	t_stack	*second;
 	t_stack	*last;
 
 	if (!a || !(*a) || !(*a)->next)
 		return ;
-	if (ps_lstcount(*a) == 2)
-		ps_swap_a(a, config, 0);
-	else
-	{
-		first = *a;
-		second = first->next;
-		last = ps_lstlast(*a);
-		first->prev = last;
-		first->next = NULL;
-		last->next = first;
-		second->prev = NULL;
-	}
-	*a = second;
+	first = *a;
+	last = ps_lstlast(*a);
+	*a = first->next;
+	(*a)->prev = NULL;
+	last->next= first;
+	first->prev = last;
+	first->next = NULL;
 	if (is_write)
 	{
 		config->ra++;
@@ -48,19 +41,13 @@ void	ps_rotate_b(t_stack **b, t_config *config, int is_write)
 
 	if (!b || !(*b) || !(*b)->next)
 		return ;
-	if (ps_lstcount(*b) == 2)
-		ps_swap_b(b, config, 0);
-	else
-	{
-		first = *b;
-		second = first->next;
-		last = ps_lstlast(*b);
-		first->prev = last;
-		first->next = NULL;
-		last->next = first;
-		second->prev = NULL;
-	}
-	*b = second;
+	first = *b;
+	last = ps_lstlast(*b);
+	*b = first->next;
+	(*b)->prev = NULL;
+	last->next= first;
+	first->prev = last;
+	first->next = NULL;
 	if (is_write)
 	{
 		config->rb++;
