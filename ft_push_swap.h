@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/13 11:10:25 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/16 12:07:21 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,19 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
+// for radix_msd use
+typedef struct s_range
+{
+	int	size;
+	int	bit;
+}		t_range;
+
 // utils
 t_stack		*ps_new_node(int num);
 void		ps_lstadd_back(t_stack **lst, t_stack *new_node);
 void		ps_lstadd_front(t_stack **lst, t_stack *new_node);
 t_stack		*ps_lstlast(t_stack *lst);
-size_t		ps_lstcount(t_stack *lst);
+int			ps_lstcount(t_stack *lst);
 long		ps_atol(const char *s);
 float		ps_compute_disorder(t_stack *a);
 
@@ -76,7 +83,6 @@ void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
 
 // algo
 void		ps_init_rank(t_stack *a);
-void		ps_radix_lsd_sort(
-				t_stack **a, t_stack **b, t_config *config, size_t size);
+void		ps_radix_msd_sort(t_stack **a, t_stack **b, t_config *config);
 
 #endif

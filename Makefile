@@ -6,7 +6,7 @@
 #    By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/02 13:49:35 by hukhaw            #+#    #+#              #
-#    Updated: 2026/09/12 22:52:08 by hukhaw           ###   ########.fr        #
+#    Updated: 2026/09/16 12:05:17 by hukhaw           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS = ps_utils_a.c \
 	   ps_compute_disorder_and_symbol.c \
 	   ps_bench.c \
 	   ps_ranking.c \
-	   ps_radix_lsd_sort.c \
+	   ps_radix_msd_sort.c \
 	   ft_push_swap.c
 OBJS = $(SRCS:.c=.o)
 

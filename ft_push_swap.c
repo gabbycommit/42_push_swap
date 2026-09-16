@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:17:54 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/12 22:56:55 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/16 12:04:54 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 		return (free(config), write(2, "Error\n", 6), 1);
 	b = NULL;
 	ps_compute_disorder_and_symbol(a, config);
-	ps_radix_lsd_sort(&a, &b, config, ps_lstcount(a));
+	ps_radix_msd_sort(&a, &b, config);
 	print_a(a);
 	ps_free_stack(a);
 	ps_free_stack(b);
