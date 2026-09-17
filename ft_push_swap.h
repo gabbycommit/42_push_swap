@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 16:21:19 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/17 09:21:27 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ size_t		ps_lstcount(t_stack *lst);
 long		ps_atol(const char *s);
 float		ps_compute_disorder(t_stack *a);
 
-//parse and validation, bench
+// parse and validation, bench
 t_stack		*ps_parse_and_validation(int argc, char **argv, t_config *config);
 void		ps_compute_disorder_and_symbol(t_stack *a, t_config *config);
 void		ps_print_bench(t_config *config);
@@ -72,5 +72,8 @@ void		ps_rr(t_stack **a, t_stack **b, t_config *config);
 void		ps_reverse_rotate_a(t_stack **a, t_config *config, int is_write);
 void		ps_reverse_rotate_b(t_stack **b, t_config *config, int is_write);
 void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
+
+// algo
+void		ps_init_rank(t_stack *a);
 
 #endif
