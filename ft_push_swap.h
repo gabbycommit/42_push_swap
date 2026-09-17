@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/17 09:21:27 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/17 11:43:55 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_config
 typedef struct s_stack
 {
 	int				num;
+	int				rank;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
@@ -75,5 +76,6 @@ void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
 
 // algo
 void		ps_init_rank(t_stack *a);
+void		ps_complex_quick_sort(t_stack **a, t_stack **b, t_config *config);
 
 #endif

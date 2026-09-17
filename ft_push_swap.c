@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:17:54 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 16:35:32 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/17 11:54:45 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int	main(int argc, char **argv)
 		return (free(config), write(2, "Error\n", 6), 1);
 	b = NULL;
 	ps_compute_disorder_and_symbol(a, config);
+	ps_complex_quick_sort(&a, &b, config);
+	ps_free_stack(a);
+	ps_free_stack(b);
 	if (config->bench)
 		ps_print_bench(config);
 	return (0);
