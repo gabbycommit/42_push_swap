@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/17 11:43:55 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/19 11:03:23 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_stack		*ps_new_node(int num);
 void		ps_lstadd_back(t_stack **lst, t_stack *new_node);
 void		ps_lstadd_front(t_stack **lst, t_stack *new_node);
 t_stack		*ps_lstlast(t_stack *lst);
-size_t		ps_lstcount(t_stack *lst);
+int			ps_lstcount(t_stack *lst);
 long		ps_atol(const char *s);
 float		ps_compute_disorder(t_stack *a);
 
@@ -76,6 +76,10 @@ void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
 
 // algo
 void		ps_init_rank(t_stack *a);
+int			ps_get_pivot(t_stack *stack, int size);
+void		ps_sort_two(t_stack **stack, t_config *config, int is_a);
+void		ps_restore(
+				t_stack **stack, t_config *config, int rotate_count, int is_a);
 void		ps_complex_quick_sort(t_stack **a, t_stack **b, t_config *config);
 
 #endif

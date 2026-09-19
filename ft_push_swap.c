@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:17:54 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/17 11:54:45 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/19 09:41:32 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ static void	ps_free_stack(t_stack *stack)
 	}
 }
 
+static void	print_stack_a(t_stack *a)
+{
+	printf("\n------\n");
+	while (a)
+	{
+		printf("%d\n", a->num);
+		a = a->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack		*a;
@@ -66,6 +76,8 @@ int	main(int argc, char **argv)
 	b = NULL;
 	ps_compute_disorder_and_symbol(a, config);
 	ps_complex_quick_sort(&a, &b, config);
+	print_stack_a(a);
+	print_stack_a(b);
 	ps_free_stack(a);
 	ps_free_stack(b);
 	if (config->bench)

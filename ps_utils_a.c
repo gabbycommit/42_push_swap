@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:11:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 11:32:42 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/19 09:15:29 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ps_lstadd_front(t_stack **lst, t_stack *new_node)
 	*lst = new_node;
 }
 
-size_t	ps_lstcount(t_stack *lst)
+int	ps_lstcount(t_stack *lst)
 {
 	size_t	count;
 
