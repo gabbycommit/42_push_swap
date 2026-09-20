@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 16:21:19 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/20 11:47:47 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,17 @@ typedef struct s_config
 typedef struct s_stack
 {
 	int				num;
+	int				rank;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
+
+typedef struct s_move
+{
+	int	a;
+	int	b;
+	int	cost;
+}		t_move;
 
 // utils
 t_stack		*ps_new_node(int num);
@@ -72,5 +80,16 @@ void		ps_rr(t_stack **a, t_stack **b, t_config *config);
 void		ps_reverse_rotate_a(t_stack **a, t_config *config, int is_write);
 void		ps_reverse_rotate_b(t_stack **b, t_config *config, int is_write);
 void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
+
+void		ps_init_rank(t_stack *a);
+int			ps_signed_moves_to_top(int idx, int size);
+int			ps_total_cost(int a, int b);
+int			ps_max_idx(t_stack *lst);
+int			ps_target_idx_b(t_stack *b, int rank);
+void		ps_rot_a(int n, t_stack **a, t_config *config);
+void		ps_rot_b(int n, t_stack **b, t_config *config);
+void		ps_exec_move(t_move *m, t_stack **a, t_stack **b, t_config *config);
+void		ps_sort_small(t_stack **a, t_config *config);
+void		ps_simple_sort(t_stack **a, t_stack **b, t_config *config);
 
 #endif

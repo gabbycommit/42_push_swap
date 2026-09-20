@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:17:54 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 16:35:32 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/20 12:06:25 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ static void	ps_free_stack(t_stack *stack)
 	}
 }
 
+static void	ps_algo_exec(t_stack **a, t_stack **b, t_config *config)
+{
+	if (ft_strncmp(config->symbol, "O(n2)", 6) == 0)
+		ps_simple_sort(a, b, config);
+	else if (ft_strncmp(config->symbol, "O(n√n)", 7) == 0)
+		return ;
+	else if (ft_strncmp(config->symbol, "O(n log n)", 11) == 0)
+		return ;
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack		*a;
@@ -65,7 +75,11 @@ int	main(int argc, char **argv)
 		return (free(config), write(2, "Error\n", 6), 1);
 	b = NULL;
 	ps_compute_disorder_and_symbol(a, config);
+	ps_algo_exec(&a, &b, config);
+	ps_free_stack(a);
+	ps_free_stack(b);
 	if (config->bench)
 		ps_print_bench(config);
+	free(config);
 	return (0);
 }
