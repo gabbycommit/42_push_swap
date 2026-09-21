@@ -6,7 +6,7 @@
 #    By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/02 13:49:35 by hukhaw            #+#    #+#              #
-#    Updated: 2026/09/19 23:02:52 by hukhaw           ###   ########.fr        #
+#    Updated: 2026/09/21 11:22:19 by hukhaw           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,14 @@ SRCS = ps_utils_a.c \
 	   ps_compute_disorder_and_symbol.c \
 	   ps_bench.c \
 	   ps_ranking.c \
-	   ps_simple_small.c \
+	   ps_sort_small.c \
 	   ps_simple_cost.c \
 	   ps_simple_exec.c \
 	   ps_simple.c \
+	   ps_medium_pull.c \
+	   ps_medium_push.c \
+	   ps_medium_utils.c \
+	   ps_medium_sort.c \
 	   ft_push_swap.c
 OBJS = $(SRCS:.c=.o)
 
