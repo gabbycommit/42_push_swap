@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/21 12:15:34 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 06:47:08 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ t_stack		*ps_new_node(int num);
 void		ps_lstadd_back(t_stack **lst, t_stack *new_node);
 void		ps_lstadd_front(t_stack **lst, t_stack *new_node);
 t_stack		*ps_lstlast(t_stack *lst);
-size_t		ps_lstcount(t_stack *lst);
+int			ps_lstcount(t_stack *lst);
 long		ps_atol(const char *s);
 float		ps_compute_disorder(t_stack *a);
 
-//parse and validation, bench
+// parse and validation, bench
 t_stack		*ps_parse_and_validation(int argc, char **argv, t_config *config);
 void		ps_compute_disorder_and_symbol(t_stack *a, t_config *config);
 void		ps_print_bench(t_config *config);
@@ -110,5 +110,12 @@ void		ps_rot_b_dir(int idx, int size, t_stack **b, t_config *config);
 void		ps_push_chunks(t_stack **a, t_stack **b, t_config *config, int n);
 void		ps_pull_back(t_stack **a, t_stack **b, t_config *config);
 void		ps_medium_sort(t_stack **a, t_stack **b, t_config *config);
+
+// complex sort
+int			ps_get_pivot(t_stack *stack, int size);
+void		ps_sort_two(t_stack **stack, t_config *config, int is_a);
+void		ps_restore(
+				t_stack **stack, t_config *config, int rotate_count, int is_a);
+void		ps_complex_quick_sort(t_stack **a, t_stack **b, t_config *config);
 
 #endif
