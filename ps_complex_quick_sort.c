@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 22:38:46 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/19 11:05:23 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 07:34:39 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ps_quick_sort_b(
 	}
 	if (size == 2)
 	{
-		ps_sort_two(b, config, 0);
+		ps_complex_sort_two(b, config, 0);
 		ps_push_a(a, b, config);
 		ps_push_a(a, b, config);
 		return ;
@@ -96,11 +96,11 @@ static void	ps_quick_sort_a(
 {
 	int	*push_rotate_count;
 
-	if (size <= 1)
+	if (size <= 1 || ps_is_sorted(*a))
 		return ;
 	if (size == 2)
 	{
-		ps_sort_two(a, config, 1);
+		ps_complex_sort_two(a, config, 1);
 		return ;
 	}
 	push_rotate_count = ps_partition_a(a, b, config, size);

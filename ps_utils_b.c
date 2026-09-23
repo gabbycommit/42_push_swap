@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:38:12 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 20:41:50 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 11:16:19 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ long	ps_atol(const char *s)
 	return (result * sign);
 }
 
-float	ps_compute_disorder(t_stack *a)
+double	ps_compute_disorder(t_stack *a)
 {
-	float	mistakes;
-	float	total_pairs;
+	double	mistakes;
+	double	total_pairs;
 	t_stack	*next_node;
 
 	mistakes = 0;

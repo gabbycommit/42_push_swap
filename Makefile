@@ -6,7 +6,7 @@
 #    By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/02 13:49:35 by hukhaw            #+#    #+#              #
-#    Updated: 2026/09/23 06:43:45 by hukhaw           ###   ########.fr        #
+#    Updated: 2026/09/23 07:32:05 by hukhaw           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS = ps_utils_a.c \
 	   ps_bench.c \
 	   ps_ranking.c \
 	   ps_sort_small.c \
+	   ps_is_sorted.c \
 	   ps_simple_cost.c \
 	   ps_simple_exec.c \
 	   ps_simple.c \

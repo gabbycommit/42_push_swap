@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 06:47:08 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 11:16:34 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 // for benchmark use, for calculating the operations
 typedef struct s_config
@@ -68,7 +67,7 @@ void		ps_lstadd_front(t_stack **lst, t_stack *new_node);
 t_stack		*ps_lstlast(t_stack *lst);
 int			ps_lstcount(t_stack *lst);
 long		ps_atol(const char *s);
-float		ps_compute_disorder(t_stack *a);
+double		ps_compute_disorder(t_stack *a);
 
 // parse and validation, bench
 t_stack		*ps_parse_and_validation(int argc, char **argv, t_config *config);
@@ -88,8 +87,10 @@ void		ps_reverse_rotate_a(t_stack **a, t_config *config, int is_write);
 void		ps_reverse_rotate_b(t_stack **b, t_config *config, int is_write);
 void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
 
-// init rank
+// sort utils
 void		ps_init_rank(t_stack *a);
+void		ps_sort_small(t_stack **a, t_config *config);
+int			ps_is_sorted(t_stack *a);
 
 // simple sort
 int			ps_signed_moves_to_top(int idx, int size);
@@ -99,7 +100,6 @@ int			ps_target_idx_b(t_stack *b, int rank);
 void		ps_rot_a(int n, t_stack **a, t_config *config);
 void		ps_rot_b(int n, t_stack **b, t_config *config);
 void		ps_exec_move(t_move *m, t_stack **a, t_stack **b, t_config *config);
-void		ps_sort_small(t_stack **a, t_config *config);
 void		ps_simple_sort(t_stack **a, t_stack **b, t_config *config);
 
 // medium sort
@@ -113,7 +113,7 @@ void		ps_medium_sort(t_stack **a, t_stack **b, t_config *config);
 
 // complex sort
 int			ps_get_pivot(t_stack *stack, int size);
-void		ps_sort_two(t_stack **stack, t_config *config, int is_a);
+void		ps_complex_sort_two(t_stack **stack, t_config *config, int is_a);
 void		ps_restore(
 				t_stack **stack, t_config *config, int rotate_count, int is_a);
 void		ps_complex_quick_sort(t_stack **a, t_stack **b, t_config *config);

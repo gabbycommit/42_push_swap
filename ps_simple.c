@@ -6,22 +6,11 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 11:33:15 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/20 11:48:51 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 07:28:20 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-static int	ps_is_sorted(t_stack *a)
-{
-	while (a && a->next)
-	{
-		if (a->num > a->next->num)
-			return (0);
-		a = a->next;
-	}
-	return (1);
-}
 
 // moves needed on b so that the node "rank" should sit on top of
 // (its target: biggest smaller one, or the max of b if none) reaches the top

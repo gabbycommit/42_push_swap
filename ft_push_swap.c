@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:17:54 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 06:45:53 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 07:00:03 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static void	ps_algo_exec(t_stack **a, t_stack **b, t_config *config)
 	else if (ft_strncmp(config->symbol, "O(n√n)", 7) == 0)
 		ps_medium_sort(a, b, config);
 	else if (ft_strncmp(config->symbol, "O(n log n)", 11) == 0)
-		return ;
+		ps_complex_quick_sort(a, b, config);
+}
 
 int	main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 15:40:05 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/21 11:23:00 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 07:30:09 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ps_medium_sort(t_stack **a, t_stack **b, t_config *config)
 
 	ps_init_rank(*a);
 	n = (int)ps_lstcount(*a);
-	if (n < 2)
+	if (n == 1 || ps_is_sorted(*a))
 		return ;
 	if (n <= 3)
 	{

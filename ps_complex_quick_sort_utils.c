@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/19 09:07:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/19 11:04:03 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 06:56:23 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ps_get_pivot(t_stack *stack, int size)
 	return ((max + min) / 2);
 }
 
-void	ps_sort_two(t_stack **stack, t_config *config, int is_a)
+void	ps_complex_sort_two(t_stack **stack, t_config *config, int is_a)
 {
 	if (is_a && (*stack)->rank > (*stack)->next->rank)
 		ps_swap_a(stack, config, 1);
