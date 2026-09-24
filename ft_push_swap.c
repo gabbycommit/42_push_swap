@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:17:54 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 07:00:03 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/23 17:07:24 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 	t_stack		*b;
 	t_config	*config;
 
-	if (argc == 1)
+	if (argc <= 1)
 		return (0);
 	config = ps_new_config();
 	if (!config)
