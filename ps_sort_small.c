@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 11:35:59 by hukhaw            #+#    #+#        */
-/*   Updated: 2026/09/21 11:22:05 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/26 09:35:47 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ps_sort_two(t_stack **a, t_config *config)
 {
 	if ((*a)->rank > (*a)->next->rank)
-		ps_swap_a(a, config, 1);
+		ps_swap_a(a, config);
 }
 
 // first condition: 312, 321
@@ -32,12 +32,12 @@ static void	ps_sort_three(t_stack **a, t_config *config)
 	third = (*a)->next->next->rank;
 	if (first > second && first > third)
 	{
-		ps_rotate_a(a, config, 1);
+		ps_rotate_a(a, config);
 		ps_sort_two(a, config);
 	}
 	else if (second > first && second > third)
 	{
-		ps_reverse_rotate_a(a, config, 1);
+		ps_reverse_rotate_a(a, config);
 		ps_sort_two(a, config);
 	}
 	else

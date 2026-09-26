@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 15:48:37 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/21 12:47:55 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/26 09:29:48 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ps_find_cheapest_node_idx(t_stack *a, int limit, int n)
 static void	ps_flush_rb(t_chunk *c, t_stack **b, t_config *config)
 {
 	if (c->pending_to_rb)
-		ps_rotate_b(b, config, 1);
+		ps_rotate_b(b, config);
 	c->pending_to_rb = 0;
 }
 

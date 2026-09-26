@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 22:38:46 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 07:34:39 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/26 09:32:26 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	*ps_partition_b(
 		if ((*b)->rank >= pivot && ++push_rotate_count[0])
 			ps_push_a(a, b, config);
 		else if (++push_rotate_count[1])
-			ps_rotate_b(b, config, 1);
+			ps_rotate_b(b, config);
 		i++;
 	}
 	return (push_rotate_count);
@@ -83,7 +83,7 @@ static int	*ps_partition_a(
 	while (i < size)
 	{
 		if ((*a)->rank >= pivot && ++push_rotate_count[1])
-			ps_rotate_a(a, config, 1);
+			ps_rotate_a(a, config);
 		else if (++push_rotate_count[0])
 			ps_push_b(a, b, config);
 		i++;

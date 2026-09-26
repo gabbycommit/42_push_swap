@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 11:33:14 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/20 11:34:03 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/26 09:26:12 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	ps_rot_a(int n, t_stack **a, t_config *config)
 {
 	while (n > 0)
 	{
-		ps_rotate_a(a, config, 1);
+		ps_rotate_a(a, config);
 		n--;
 	}
 	while (n < 0)
 	{
-		ps_reverse_rotate_a(a, config, 1);
+		ps_reverse_rotate_a(a, config);
 		n++;
 	}
 }
@@ -32,12 +32,12 @@ void	ps_rot_b(int n, t_stack **b, t_config *config)
 {
 	while (n > 0)
 	{
-		ps_rotate_b(b, config, 1);
+		ps_rotate_b(b, config);
 		n--;
 	}
 	while (n < 0)
 	{
-		ps_reverse_rotate_b(b, config, 1);
+		ps_reverse_rotate_b(b, config);
 		n++;
 	}
 }

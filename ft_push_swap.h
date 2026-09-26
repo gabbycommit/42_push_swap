@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 11:16:34 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/26 09:33:37 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,16 @@ void		ps_compute_disorder_and_symbol(t_stack *a, t_config *config);
 void		ps_print_bench(t_config *config);
 
 // operations
-void		ps_swap_a(t_stack **a, t_config *config, int is_write);
-void		ps_swap_b(t_stack **b, t_config *config, int is_write);
+void		ps_swap_a(t_stack **a, t_config *config);
+void		ps_swap_b(t_stack **b, t_config *config);
 void		ps_ss(t_stack **a, t_stack **b, t_config *config);
 void		ps_push_a(t_stack **a, t_stack **b, t_config *config);
 void		ps_push_b(t_stack **a, t_stack **b, t_config *config);
-void		ps_rotate_a(t_stack **a, t_config *config, int is_write);
-void		ps_rotate_b(t_stack **b, t_config *config, int is_write);
+void		ps_rotate_a(t_stack **a, t_config *config);
+void		ps_rotate_b(t_stack **b, t_config *config);
 void		ps_rr(t_stack **a, t_stack **b, t_config *config);
-void		ps_reverse_rotate_a(t_stack **a, t_config *config, int is_write);
-void		ps_reverse_rotate_b(t_stack **b, t_config *config, int is_write);
+void		ps_reverse_rotate_a(t_stack **a, t_config *config);
+void		ps_reverse_rotate_b(t_stack **b, t_config *config);
 void		ps_rrr(t_stack **a, t_stack **b, t_config *config);
 
 // sort utils

@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/19 09:07:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 06:56:23 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/26 09:31:30 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	ps_get_pivot(t_stack *stack, int size)
 void	ps_complex_sort_two(t_stack **stack, t_config *config, int is_a)
 {
 	if (is_a && (*stack)->rank > (*stack)->next->rank)
-		ps_swap_a(stack, config, 1);
+		ps_swap_a(stack, config);
 	else if (!is_a && (*stack)->rank < (*stack)->next->rank)
-		ps_swap_b(stack, config, 1);
+		ps_swap_b(stack, config);
 }
 
 void	ps_restore(
@@ -52,9 +52,9 @@ void	ps_restore(
 	while (i < rotate_count)
 	{
 		if (is_a)
-			ps_reverse_rotate_a(stack, config, 1);
+			ps_reverse_rotate_a(stack, config);
 		else
-			ps_reverse_rotate_b(stack, config, 1);
+			ps_reverse_rotate_b(stack, config);
 		i++;
 	}
 }

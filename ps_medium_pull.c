@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 15:39:48 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/21 12:47:20 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/26 09:30:18 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ps_pull_back(t_stack **a, t_stack **b, t_config *config)
 		{
 			ps_pull_one(a, b, config, max - 1);
 			ps_pull_one(a, b, config, max);
-			ps_swap_a(a, config, 1);
+			ps_swap_a(a, config);
 			size -= 2;
 		}
 		else
