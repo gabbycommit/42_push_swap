@@ -6,21 +6,56 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 15:20:40 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 17:51:16 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/27 11:54:24 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker_bonus.h"
 
-int	main(int agrc, char **argv)
+static void	ps_free_all_stack(t_stack *a, t_stack *b)
+{
+	t_stack	*temp;
+
+	while (a)
+	{
+		temp = a->next;
+		free(a);
+		a = temp;
+	}
+	while (b)
+	{
+		temp = b->next;
+		free(b);
+		b = temp;
+	}
+}
+
+static int	ps_is_sorted(t_stack *a)
+{
+	while (a->next)
+	{
+		if (a->num > a->next->num)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
+
+int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
 
 	if (argc <= 1)
-		return ;
+		return (0);
 	a = ps_parse_and_validation(argv);
 	if (!a)
 		return (write(2, "Error\n", 6), 1);
 	b = NULL;
+	if (!ps_exec_ops(0, &a, &b))
+		return (ps_free_all_stack(a, b), write(2, "Error\n", 6), 1);
+	if (ps_is_sorted(a) && !b)
+		return (ps_free_all_stack(a, b), ft_putstr_fd("OK\n", 1), 0);
+	else
+		return (ps_free_all_stack(a, b), ft_putstr_fd("KO\n", 1), 0);
 }

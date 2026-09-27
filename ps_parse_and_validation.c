@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 21:36:37 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/09 13:13:17 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/27 11:44:54 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ static int	ps_is_valid_input(char *s, t_stack *a)
 	long	num;
 
 	i = 0;
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	if (!s[i])
+		return (0);
 	while (s[i])
 	{
-		if (s[i] == '-' || s[i] == '+')
-			i++;
 		if (!ft_isdigit(s[i]))
 			return (0);
 		i++;

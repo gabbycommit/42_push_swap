@@ -6,13 +6,13 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 10:10:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 15:16:33 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/26 09:50:28 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker_bonus.h"
 
-void	ps_push_a(t_stack **a, t_stack **b, t_config *config)
+void	ps_push_a(t_stack **a, t_stack **b)
 {
 	t_stack	*first_b;
 	t_stack	*second_b;
@@ -31,7 +31,7 @@ void	ps_push_a(t_stack **a, t_stack **b, t_config *config)
 		*b = NULL;
 }
 
-void	ps_push_b(t_stack **a, t_stack **b, t_config *config)
+void	ps_push_b(t_stack **a, t_stack **b)
 {
 	t_stack	*first_a;
 	t_stack	*second_a;

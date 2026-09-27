@@ -6,13 +6,13 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 15:36:26 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/23 17:06:54 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/27 11:45:21 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker_bonus.h"
 
-// only digit, only int, no repeat
+// only digit, int, no repeat
 static int	ps_is_valid(const char *s, t_stack *a)
 {
 	int		i;
@@ -21,13 +21,15 @@ static int	ps_is_valid(const char *s, t_stack *a)
 	i = 0;
 	if (s[i] == '-' || s[i] == '+')
 		i++;
+	if (!s[i])
+		return (0);
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
 			return (0);
 		i++;
 	}
-	num = ft_atol(s);
+	num = ps_atol(s);
 	if (num > 2147483647 || num < -2147483648)
 		return (0);
 	while (a)
@@ -49,7 +51,6 @@ static void	ps_free_all(t_stack *a, char **splitted, int i)
 		free(a);
 		a = temp;
 	}
-	a = NULL;
 	while (splitted[i])
 	{
 		free(splitted[i]);
@@ -58,7 +59,7 @@ static void	ps_free_all(t_stack *a, char **splitted, int i)
 	free(splitted);
 }
 
-static void	ps_process_validate_and_stack(char **splitted, t_stack **a)
+static int	ps_process_validate_and_stack(char **splitted, t_stack **a)
 {
 	int		i;
 	int		num;
@@ -67,7 +68,7 @@ static void	ps_process_validate_and_stack(char **splitted, t_stack **a)
 	i = 0;
 	while (splitted[i])
 	{
-		if (ps_is_valid(splitted[i]))
+		if (ps_is_valid(splitted[i], *a))
 		{
 			num = ft_atoi(splitted[i]);
 			new_node = ps_new_node(num);
@@ -77,17 +78,18 @@ static void	ps_process_validate_and_stack(char **splitted, t_stack **a)
 		else
 		{
 			ps_free_all(*a, splitted, i);
-			return ;
+			return (0);
 		}
-		i++:
+		i++;
 	}
 	free(splitted);
+	return (1);
 }
 
-t_stack	*ps_parse_and_validation(char **agrv)
+t_stack	*ps_parse_and_validation(char **argv)
 {
 	int		i;
-	char	*splitted;
+	char	**splitted;
 	t_stack *a;
 
 	i = 1;
@@ -97,7 +99,8 @@ t_stack	*ps_parse_and_validation(char **agrv)
 		splitted = ft_split(argv[i], ' ');
 		if (!splitted)
 			return (NULL);
-		ps_process_validate_and_stack(splitted, &a);
+		if (!ps_process_validate_and_stack(splitted, &a))
+			return (NULL);
 		i++;
 	}
 	return (a);
