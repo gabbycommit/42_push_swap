@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 15:36:26 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/27 11:45:21 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/27 12:05:37 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_stack	*ps_parse_and_validation(char **argv)
 {
 	int		i;
 	char	**splitted;
-	t_stack *a;
+	t_stack	*a;
 
 	i = 1;
 	a = NULL;

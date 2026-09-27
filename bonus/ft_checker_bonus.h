@@ -6,15 +6,15 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 15:05:21 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/27 09:52:33 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/27 12:04:59 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CHECKER_BONUS
-# define FT_CHECKER_BONUS
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 3
-#endif
+#ifndef FT_CHECKER_BONUS_H
+# define FT_CHECKER_BONUS_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 3
+# endif
 
 # include "libft.h"
 # include <stdlib.h>
