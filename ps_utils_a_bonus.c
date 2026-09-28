@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_utils_bonus.c                                   :+:      :+:    :+:   */
+/*   ps_utils_a_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 15:10:07 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/26 15:07:49 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/28 16:54:09 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,29 +75,4 @@ void	ps_lstadd_front(t_stack **lst, t_stack *new_node)
 	else
 		(*lst)->next = NULL;
 	*lst = new_node;
-}
-
-long	ps_atol(const char *s)
-{
-	long	result;
-	long	sign;
-	int		i;
-
-	result = 0;
-	sign = 1;
-	i = 0;
-	while ((s[i] >= 9 && s[i] <= 13) || s[i] == ' ')
-		i++;
-	if (s[i] == '-' || s[i] == '+')
-	{
-		if (s[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (s[i] >= '0' && s[i] <= '9')
-	{
-		result = (result * 10) + (s[i] - '0');
-		i++;
-	}
-	return (result * sign);
 }

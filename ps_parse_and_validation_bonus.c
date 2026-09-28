@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 15:36:26 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/27 12:05:37 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/28 17:45:00 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ps_is_valid(const char *s, t_stack *a)
 		i++;
 	}
 	num = ps_atol(s);
-	if (num > 2147483647 || num < -2147483648)
+	if (num > INT_MAX || num < INT_MIN)
 		return (0);
 	while (a)
 	{
@@ -51,6 +51,8 @@ static void	ps_free_all(t_stack *a, char **splitted, int i)
 		free(a);
 		a = temp;
 	}
+	if (!splitted)
+		return ;
 	while (splitted[i])
 	{
 		free(splitted[i]);
@@ -70,16 +72,15 @@ static int	ps_process_validate_and_stack(char **splitted, t_stack **a)
 	{
 		if (ps_is_valid(splitted[i], *a))
 		{
-			num = ft_atoi(splitted[i]);
+			num = (int)ps_atol(splitted[i]);
 			new_node = ps_new_node(num);
+			if (!new_node)
+				return (ps_free_all(*a, splitted, i), 0);
 			ps_lstadd_back(a, new_node);
 			free(splitted[i]);
 		}
 		else
-		{
-			ps_free_all(*a, splitted, i);
-			return (0);
-		}
+			return (ps_free_all(*a, splitted, i), 0);
 		i++;
 	}
 	free(splitted);
@@ -98,7 +99,9 @@ t_stack	*ps_parse_and_validation(char **argv)
 	{
 		splitted = ft_split(argv[i], ' ');
 		if (!splitted)
-			return (NULL);
+			return (ps_free_all(a, NULL, 0), NULL);
+		if (!splitted[0])
+			return (ps_free_all(a, splitted, 0), NULL);
 		if (!ps_process_validate_and_stack(splitted, &a))
 			return (NULL);
 		i++;

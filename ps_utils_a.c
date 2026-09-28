@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:11:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/19 09:15:29 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/27 16:13:47 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_stack	*ps_new_node(int num)
 // get the last node of stack
 t_stack	*ps_lstlast(t_stack *lst)
 {
+	if (!lst)
+		return (NULL);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);

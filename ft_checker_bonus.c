@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 15:20:40 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/27 11:54:24 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/28 16:41:25 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void	ps_free_all_stack(t_stack *a, t_stack *b)
 
 static int	ps_is_sorted(t_stack *a)
 {
+	if (!a)
+		return (1);
 	while (a->next)
 	{
 		if (a->num > a->next->num)

@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 21:36:37 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/27 11:44:54 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/27 16:00:36 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	ps_is_valid_input(char *s, t_stack *a)
 		i++;
 	}
 	num = ps_atol(s);
-	if (num > 2147483647 || num < -2147483648)
+	if (num > INT_MAX || num < INT_MIN)
 		return (0);
 	while (a)
 	{
@@ -104,11 +104,13 @@ static t_stack	*ps_num_parse_and_validation(
 	int		i;
 
 	i = 0;
+	if (!splitted[i])
+		return (ps_free_all_and_null(argv_without_flags, splitted, &i, a));
 	while (splitted[i])
 	{
 		if (!ps_is_valid_input(splitted[i], a))
 			return (ps_free_all_and_null(argv_without_flags, splitted, &i, a));
-		new_node = ps_new_node(ft_atoi(splitted[i]));
+		new_node = ps_new_node((int)ps_atol(splitted[i]));
 		if (!new_node)
 			return (ps_free_all_and_null(argv_without_flags, splitted, &i, a));
 		ps_lstadd_back(&a, new_node);

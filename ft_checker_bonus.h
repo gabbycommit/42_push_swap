@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 15:05:21 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/27 12:04:59 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/28 16:44:13 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
+# include <limits.h>
 
 typedef struct s_stack
 {

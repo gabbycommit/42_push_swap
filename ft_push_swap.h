@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/26 09:33:37 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/28 16:27:39 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 // for benchmark use, for calculating the operations
 typedef struct s_config
@@ -31,7 +32,7 @@ typedef struct s_config
 	int			rra;
 	int			rrb;
 	int			rrr;
-	float		disorder;
+	double		disorder;
 	int			bench;
 	char		*strategy;
 	char		*symbol;
