@@ -6,12 +6,15 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 10:23:36 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/30 10:33:11 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/30 13:05:53 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
+/*to check whether chuck size is equal to stack size
+ * if yes and still in BOTTOM, will change is to TOP
+ * so we no need to use rrb/rra */
 static void	ps_fix_loc(t_ps *ps, t_complex_chunk *chunk)
 {
 	if (chunk->loc == BOTTOM_A && chunk->size == ps_lstcount(*ps->a))
@@ -20,18 +23,25 @@ static void	ps_fix_loc(t_ps *ps, t_complex_chunk *chunk)
 		chunk->loc = TOP_B;
 }
 
-/* If the chunk's biggest number is directly reachable, send it straight
-** onto the sorted part of A instead of splitting it again. */
+/* If the chunk's biggest number is directly reachable
+ * e.g: at the top/bottom of chunk
+ * send it straight onto the sorted part of A 
+ * instead of splitting it again. */
 static void	ps_easy_sort(t_ps *ps, t_complex_chunk *chunk)
 {
+	int	chunk_max;
+
+	chunk_max = chunk->lo + chunk->size - 1;
 	while (chunk->loc != TOP_A && chunk->size > 0
-		&& ps_peek(ps, chunk->loc) == chunk->lo + chunk->size - 1)
+		&& ps_peek(ps, chunk->loc) == chunk_max)
 	{
 		ps_move(ps, chunk->loc, TOP_A);
 		chunk->size--;
+		chunk_max = chunk->lo + chunk->size - 1;
 	}
 }
 
+/* recursion always start from max->medium->min */
 static void	ps_chunk_sort(t_ps *ps, t_complex_chunk *chunk)
 {
 	t_complex_chunk	dest[3];

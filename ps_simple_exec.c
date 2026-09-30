@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 11:33:14 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/26 09:26:12 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/30 14:22:24 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,33 @@ void	ps_exec_move(t_move *m, t_stack **a, t_stack **b, t_config *config)
 	}
 	ps_rot_a(m->a, a, config);
 	ps_rot_b(m->b, b, config);
+}
+
+// keep the combination (x on a, y on b) if it is cheaper than the best so far
+static void	ps_try(t_move *best, int x, int y)
+{
+	int	cost;
+
+	cost = ps_total_cost(x, y);
+	if (best->cost < 0 || cost < best->cost)
+	{
+		best->a = x;
+		best->b = y;
+		best->cost = cost;
+	}
+}
+
+// try all 4 direction combos: ra+rb, rra+rrb, ra+rrb, rra+rb
+t_move	ps_best_move(int idx_a, int size_a, int idx_b, int size_b)
+{
+	t_move	best;
+
+	best.a = 0;
+	best.b = 0;
+	best.cost = -1;
+	ps_try(&best, idx_a, idx_b);
+	ps_try(&best, idx_a - size_a, idx_b - size_b);
+	ps_try(&best, idx_a, idx_b - size_b);
+	ps_try(&best, idx_a - size_a, idx_b);
+	return (best);
 }

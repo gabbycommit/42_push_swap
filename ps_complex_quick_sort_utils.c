@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 10:25:32 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/30 10:25:41 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/30 11:56:17 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ int	ps_in_a(t_loc loc)
 /* rank of the element that would be taken next from this location */
 int	ps_peek(t_ps *ps, t_loc loc)
 {
-	t_stack	*node;
+	t_stack	*stack;
 
 	if (ps_in_a(loc))
-		node = *ps->a;
+		stack = *ps->a;
 	else
-		node = *ps->b;
+		stack = *ps->b;
 	if (loc == BOTTOM_A || loc == BOTTOM_B)
-		while (node->next)
-			node = node->next;
-	return (node->rank);
+		while (stack->next)
+			stack = stack->next;
+	return (stack->rank);
 }
 
 /* move one element from one of the 4 locations to another */

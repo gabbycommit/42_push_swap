@@ -6,18 +6,11 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 11:52:01 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/20 11:52:06 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/30 14:22:06 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-static int	ps_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
 
 // idx -> signed number of moves to bring that index to the top
 // >= 0 : rotate (ra / rb) this many times
@@ -31,15 +24,23 @@ int	ps_signed_moves_to_top(int idx, int size)
 
 // cost of doing a-moves and b-moves together
 // same direction -> shared with rr / rrr, so only the larger one counts
+// opposite direction -> nothing shared, so add both
 int	ps_total_cost(int a, int b)
 {
-	if ((a >= 0 && b >= 0) || (a <= 0 && b <= 0))
+	if (a <= 0 && b <= 0)
 	{
-		if (ps_abs(a) > ps_abs(b))
-			return (ps_abs(a));
-		return (ps_abs(b));
+		a = -a;
+		b = -b;
 	}
-	return (ps_abs(a) + ps_abs(b));
+	if (a >= 0 && b >= 0)
+	{
+		if (a > b)
+			return (a);
+		return (b);
+	}
+	if (a < 0)
+		return (b - a);
+	return (a - b);
 }
 
 // index of the biggest rank in the list
@@ -65,26 +66,53 @@ int	ps_max_idx(t_stack *lst)
 	return (idx);
 }
 
-// index of the biggest rank in b that is still smaller than "rank"
-// returns -1 if every element in b is bigger
-int	ps_target_idx_b(t_stack *b, int rank)
+// index of the smallest rank in the list
+int	ps_min_idx(t_stack *lst)
 {
 	int	i;
 	int	idx;
-	int	best;
+	int	min;
 
 	i = 0;
-	idx = -1;
-	best = -1;
-	while (b)
+	idx = 0;
+	min = lst->rank;
+	while (lst)
 	{
-		if (b->rank < rank && b->rank > best)
+		if (lst->rank < min)
 		{
-			best = b->rank;
+			min = lst->rank;
 			idx = i;
 		}
 		i++;
-		b = b->next;
+		lst = lst->next;
 	}
+	return (idx);
+}
+
+// index in a of the node that "rank" should sit on top of:
+// the smallest rank bigger than "rank", or the min of a if none
+int	ps_target_idx_a(t_stack *a, int rank)
+{
+	t_stack	*cur;
+	int		i;
+	int		idx;
+	int		best;
+
+	cur = a;
+	i = 0;
+	idx = -1;
+	best = INT_MAX;
+	while (cur)
+	{
+		if (cur->rank > rank && cur->rank < best)
+		{
+			best = cur->rank;
+			idx = i;
+		}
+		i++;
+		cur = cur->next;
+	}
+	if (idx < 0)
+		return (ps_min_idx(a));
 	return (idx);
 }
