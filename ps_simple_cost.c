@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 11:52:01 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/30 14:22:06 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/30 18:12:31 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,6 @@ int	ps_total_cost(int a, int b)
 	if (a < 0)
 		return (b - a);
 	return (a - b);
-}
-
-// index of the biggest rank in the list
-int	ps_max_idx(t_stack *lst)
-{
-	int	i;
-	int	idx;
-	int	max;
-
-	i = 0;
-	idx = 0;
-	max = lst->rank;
-	while (lst)
-	{
-		if (lst->rank > max)
-		{
-			max = lst->rank;
-			idx = i;
-		}
-		i++;
-		lst = lst->next;
-	}
-	return (idx);
 }
 
 // index of the smallest rank in the list

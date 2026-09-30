@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/30 15:09:50 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/30 18:13:49 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int			ps_is_sorted(t_stack *a);
 // simple sort
 int			ps_signed_moves_to_top(int idx, int size);
 int			ps_total_cost(int a, int b);
-int			ps_max_idx(t_stack *lst);
 int			ps_min_idx(t_stack *lst);
 int			ps_target_idx_a(t_stack *a, int rank);
 t_move		ps_best_move(int idx_a, int size_a, int idx_b, int size_b);
