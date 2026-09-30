@@ -6,7 +6,7 @@
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 15:42:11 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/28 16:27:39 by hukhaw           ###   ########.fr       */
+/*   Updated: 2026/09/30 10:44:37 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,28 @@ typedef struct s_chunk
 	int	pending_to_rb;
 }		t_chunk;
 
+typedef enum e_loc
+{
+	TOP_A,
+	BOTTOM_A,
+	TOP_B,
+	BOTTOM_B
+}	t_loc;
+
+typedef struct s_ps
+{
+	t_stack		**a;
+	t_stack		**b;
+	t_config	*config;
+}				t_ps;
+
+typedef struct s_complex_chunk
+{
+	t_loc	loc;
+	int		lo;
+	int		size;
+}			t_complex_chunk;
+
 // utils
 t_stack		*ps_new_node(int num);
 void		ps_lstadd_back(t_stack **lst, t_stack *new_node);
@@ -113,10 +135,12 @@ void		ps_pull_back(t_stack **a, t_stack **b, t_config *config);
 void		ps_medium_sort(t_stack **a, t_stack **b, t_config *config);
 
 // complex sort
-int			ps_get_pivot(t_stack *stack, int size);
-void		ps_complex_sort_two(t_stack **stack, t_config *config, int is_a);
-void		ps_restore(
-				t_stack **stack, t_config *config, int rotate_count, int is_a);
+int			ps_in_a(t_loc loc);
+int			ps_peek(t_ps *ps, t_loc loc);
+void		ps_move(t_ps *ps, t_loc from, t_loc to);
+void		ps_sort_small_chunk(t_ps *ps, t_complex_chunk *chunk);
+void		ps_split_chunk(
+				t_ps *ps, t_complex_chunk *chunk, t_complex_chunk *dest);
 void		ps_complex_quick_sort(t_stack **a, t_stack **b, t_config *config);
 
 #endif

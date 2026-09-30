@@ -5,117 +5,79 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/18 22:38:46 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/28 15:14:27 by hukhaw           ###   ########.fr       */
+/*   Created: 2026/09/30 10:23:36 by hukhaw            #+#    #+#             */
+/*   Updated: 2026/09/30 10:33:11 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static void	ps_quick_sort_a(
-				t_stack **a, t_stack **b, t_config *config, int size);
-
-static int	*ps_partition_b(
-				t_stack **a, t_stack **b, t_config *config, int size)
+static void	ps_fix_loc(t_ps *ps, t_complex_chunk *chunk)
 {
-	int	i;
-	int	pivot;
-	int	*push_rotate_count;
-
-	i = 0;
-	pivot = ps_get_pivot(*b, size);
-	push_rotate_count = (int *)malloc(sizeof(int) * 2);
-	if (!push_rotate_count)
-		return (NULL);
-	push_rotate_count[0] = 0;
-	push_rotate_count[1] = 0;
-	while (i < size)
-	{
-		if ((*b)->rank >= pivot && ++push_rotate_count[0])
-			ps_push_a(a, b, config);
-		else if (++push_rotate_count[1])
-			ps_rotate_b(b, config);
-		i++;
-	}
-	return (push_rotate_count);
+	if (chunk->loc == BOTTOM_A && chunk->size == ps_lstcount(*ps->a))
+		chunk->loc = TOP_A;
+	else if (chunk->loc == BOTTOM_B && chunk->size == ps_lstcount(*ps->b))
+		chunk->loc = TOP_B;
 }
 
-static void	ps_quick_sort_b(
-				t_stack **a, t_stack **b, t_config *config, int size)
+/* If the chunk's biggest number is directly reachable, send it straight
+** onto the sorted part of A instead of splitting it again. */
+static void	ps_easy_sort(t_ps *ps, t_complex_chunk *chunk)
 {
-	int	*push_rotate_count;
-
-	if (size == 0)
-		return ;
-	if (size == 1)
+	while (chunk->loc != TOP_A && chunk->size > 0
+		&& ps_peek(ps, chunk->loc) == chunk->lo + chunk->size - 1)
 	{
-		ps_push_a(a, b, config);
-		return ;
+		ps_move(ps, chunk->loc, TOP_A);
+		chunk->size--;
 	}
-	if (size == 2)
-	{
-		ps_complex_sort_two(b, config, 0);
-		ps_push_a(a, b, config);
-		ps_push_a(a, b, config);
-		return ;
-	}
-	push_rotate_count = ps_partition_b(a, b, config, size);
-	if (!push_rotate_count)
-		return ;
-	ps_quick_sort_a(a, b, config, push_rotate_count[0]);
-	ps_restore(b, config, push_rotate_count[1], 0);
-	ps_quick_sort_b(a, b, config, size - push_rotate_count[0]);
-	free(push_rotate_count);
 }
 
-static int	*ps_partition_a(
-				t_stack **a, t_stack **b, t_config *config, int size)
+static void	ps_chunk_sort(t_ps *ps, t_complex_chunk *chunk)
 {
-	int	i;
-	int	pivot;
-	int	*push_rotate_count;
+	t_complex_chunk	dest[3];
 
-	i = 0;
-	pivot = ps_get_pivot(*a, size);
-	push_rotate_count = (int *)malloc(sizeof(int) * 2);
-	if (!push_rotate_count)
-		return (NULL);
-	push_rotate_count[0] = 0;
-	push_rotate_count[1] = 0;
-	while (i < size)
+	ps_fix_loc(ps, chunk);
+	ps_easy_sort(ps, chunk);
+	if (chunk->size <= 3)
 	{
-		if ((*a)->rank >= pivot && ++push_rotate_count[1])
-			ps_rotate_a(a, config);
-		else if (++push_rotate_count[0])
-			ps_push_b(a, b, config);
-		i++;
+		ps_sort_small_chunk(ps, chunk);
+		return ;
 	}
-	return (push_rotate_count);
+	ps_split_chunk(ps, chunk, dest);
+	ps_chunk_sort(ps, &dest[2]);
+	ps_chunk_sort(ps, &dest[1]);
+	ps_chunk_sort(ps, &dest[0]);
 }
 
-static void	ps_quick_sort_a(
-				t_stack **a, t_stack **b, t_config *config, int size)
+static int	ps_min_rank(t_stack *stack)
 {
-	int	*push_rotate_count;
+	int	min;
 
-	if (size <= 1 || ps_is_sorted(*a))
-		return ;
-	if (size == 2)
+	min = stack->rank;
+	while (stack)
 	{
-		ps_complex_sort_two(a, config, 1);
-		return ;
+		if (stack->rank < min)
+			min = stack->rank;
+		stack = stack->next;
 	}
-	push_rotate_count = ps_partition_a(a, b, config, size);
-	if (!push_rotate_count)
-		return ;
-	ps_restore(a, config, push_rotate_count[1], 1);
-	ps_quick_sort_a(a, b, config, size - push_rotate_count[0]);
-	ps_quick_sort_b(a, b, config, push_rotate_count[0]);
-	free(push_rotate_count);
+	return (min);
 }
 
 void	ps_complex_quick_sort(t_stack **a, t_stack **b, t_config *config)
 {
+	t_ps			ps;
+	t_complex_chunk	all;
+
+	if (!a || !*a)
+		return ;
 	ps_init_rank(*a);
-	ps_quick_sort_a(a, b, config, ps_lstcount(*a));
+	if (ps_is_sorted(*a))
+		return ;
+	ps.a = a;
+	ps.b = b;
+	ps.config = config;
+	all.loc = TOP_A;
+	all.size = ps_lstcount(*a);
+	all.lo = ps_min_rank(*a);
+	ps_chunk_sort(&ps, &all);
 }

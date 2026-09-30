@@ -5,56 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hukhaw <hukhaw@student.42penang.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/19 09:07:47 by hukhaw            #+#    #+#             */
-/*   Updated: 2026/09/26 09:31:30 by hukhaw           ###   ########.fr       */
+/*   Created: 2026/09/30 10:25:32 by hukhaw            #+#    #+#             */
+/*   Updated: 2026/09/30 10:25:41 by hukhaw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	ps_get_pivot(t_stack *stack, int size)
+int	ps_in_a(t_loc loc)
 {
-	int	i;
-	int	max;
-	int	min;
-
-	i = 0;
-	max = stack->rank;
-	min = stack->rank;
-	while (i < size)
-	{
-		if (stack->rank < min)
-			min = stack->rank;
-		else if (stack->rank > max)
-			max = stack->rank;
-		i++;
-		stack = stack->next;
-	}
-	return ((max + min) / 2);
+	return (loc == TOP_A || loc == BOTTOM_A);
 }
 
-void	ps_complex_sort_two(t_stack **stack, t_config *config, int is_a)
+/* rank of the element that would be taken next from this location */
+int	ps_peek(t_ps *ps, t_loc loc)
 {
-	if (is_a && (*stack)->rank > (*stack)->next->rank)
-		ps_swap_a(stack, config);
-	else if (!is_a && (*stack)->rank < (*stack)->next->rank)
-		ps_swap_b(stack, config);
+	t_stack	*node;
+
+	if (ps_in_a(loc))
+		node = *ps->a;
+	else
+		node = *ps->b;
+	if (loc == BOTTOM_A || loc == BOTTOM_B)
+		while (node->next)
+			node = node->next;
+	return (node->rank);
 }
 
-void	ps_restore(
-			t_stack **stack, t_config *config, int rotate_count, int is_a)
+/* move one element from one of the 4 locations to another */
+void	ps_move(t_ps *ps, t_loc from, t_loc to)
 {
-	int	i;
-
-	i = 0;
-	if (rotate_count == ps_lstcount(*stack))
-		return ;
-	while (i < rotate_count)
-	{
-		if (is_a)
-			ps_reverse_rotate_a(stack, config);
-		else
-			ps_reverse_rotate_b(stack, config);
-		i++;
-	}
+	if (from == BOTTOM_A)
+		ps_reverse_rotate_a(ps->a, ps->config);
+	else if (from == BOTTOM_B)
+		ps_reverse_rotate_b(ps->b, ps->config);
+	if (ps_in_a(from) && !ps_in_a(to))
+		ps_push_b(ps->a, ps->b, ps->config);
+	else if (!ps_in_a(from) && ps_in_a(to))
+		ps_push_a(ps->a, ps->b, ps->config);
+	if (to == BOTTOM_A)
+		ps_rotate_a(ps->a, ps->config);
+	else if (to == BOTTOM_B)
+		ps_rotate_b(ps->b, ps->config);
 }
