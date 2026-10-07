@@ -398,7 +398,7 @@ An AI assistant was used for:
 
 - helping in understand the logic behind: insertion sort, greedy insertion,
   chunk-based sorting, sliding-window chunk sort, radix sort (LSD and MSD),
-  quicksort, the concept of mutual recursion, and Big-O notation;
+  quicksort, two-way quicksort, three-way quicksort, the concept of mutual recursion, and Big-O notation;
 - reviewing our code for logic errors and edge cases (parsing, integer
   overflow, empty arguments, memory leaks and NULL checks);
 - checking the Makefile (relinking, header dependencies, `.PHONY`);
