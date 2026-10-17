@@ -68,7 +68,7 @@ An instruction on a stack that has too few elements does nothing.
 
 ### Compilation
 
-The project needs the `libft` folder (sources + Makefile) at the root of the
+he project needs the `libft` folder (sources + Makefile) at the root of the
 repository; the Makefile builds it automatically. Everything is compiled with
 `cc -Wall -Wextra -Werror`.
 
@@ -382,8 +382,8 @@ recursion in the complex regime).
 
 | Learner | Contribution |
 |---|---|
-| hukhaw | all of the project |
-| smushrof | `instructions` |
+| hukhaw | `parsing / validation`, `disorder / bench`, `simple`, `medium`, `bonus` |
+| smushrof | `instructions`, `entry point`, `complex`, `ranking / small sort` |
 
 ## Resources
 
